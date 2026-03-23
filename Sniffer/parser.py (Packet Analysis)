@@ -1,0 +1,17 @@
+from scapy.layers.inet import IP, TCP, UDP
+
+def parse_packet(packet):
+    if IP in packet:
+        ip_layer = packet[IP]
+        src = ip_layer.src
+        dst = ip_layer.dst
+
+        protocol = "OTHER"
+        if TCP in packet:
+            protocol = "TCP"
+        elif UDP in packet:
+            protocol = "UDP"
+
+        return f"[{protocol}] {src} -> {dst}"
+
+    return None
