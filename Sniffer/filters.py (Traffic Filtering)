@@ -1,0 +1,7 @@
+from scapy.layers.inet import TCP
+
+def packet_filter(packet):
+    # Example: Only capture HTTP traffic (port 80)
+    if packet.haslayer(TCP):
+        return packet[TCP].dport == 80 or packet[TCP].sport == 80
+    return False
