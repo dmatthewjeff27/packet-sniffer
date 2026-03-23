@@ -1,0 +1,10 @@
+from sklearn.ensemble import IsolationForest
+import numpy as np
+
+model = IsolationForest(contamination=0.05)
+
+def train_model(data):
+    model.fit(data)
+
+def predict(data):
+    return model.predict(data)  # -1 = anomaly
